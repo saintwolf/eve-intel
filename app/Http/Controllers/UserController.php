@@ -48,6 +48,9 @@ class UserController extends BaseController
 			'characterName' => $data['character']['name'       ],
 		]);
 
+		if($user->isBanned) {
+			return redirect()->back()->withInput()->withErrors([trans('app.invalid_uploader_banned')]); }
+
 		$user->uploader_token = str_random(40);
 		$user->save();
 

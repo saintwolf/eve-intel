@@ -17,31 +17,34 @@ $(document).ready(function() {
 function pollStart(adjust) {
 	if (adjust === true) {
 		pollSetStatus("btn-primary", "Adjusting"); }
+
 	else {
 		pollSetStatus("btn-warning", "Started");
 		pollSetSubmitter('?'); }
 
 	pollId = setInterval(function() {
 		console.log("Timer: polling");
+
 		$.ajax({
-			async: false,
+			async: true,
 			url: pollUrl + "?since=" + pollLast,
 			mimeType: "application/json",
 			dataType: 'json',
 			error: pollError,
 			success: pollSuccess,
 		});
+
 	}, pollInterval);
 }
 
 function pollStop(adjust) {
-	if (pollId == 0) {
-		return; }
+	if (pollId == 0) { return; }
 
 	clearInterval(pollId);
 	pollId = 0;
 
 	pollSetStatus("btn-danger", "Stopped");
+
 	if (adjust !== true) {
 		pollSetSubmitter('?'); }
 }
@@ -49,8 +52,9 @@ function pollStop(adjust) {
 function pollToggle() {
 	if (pollId == 0) {
 		pollStart(); }
+
 	else {
-	pollStop(); }
+		pollStop(); }
 }
 
 function pollSuccess(response) {
@@ -74,8 +78,12 @@ function pollSuccess(response) {
 function pollError(error) {
 	pollSetStatus("btn-danger", "Failed");
 	pollSetSubmitter('?');
+
 	if (error.status == 401) {
-		window.setTimeout(function() { window.location.reload(true); }, 3000); }
+		window.setTimeout(function() {
+			window.location.reload(true);
+			}, 3000);
+	}
 }
 
 function pollSetStatus(classes, text) {
@@ -87,14 +95,19 @@ function pollSetStatus(classes, text) {
 
 function pollSetSubmitter(count) {
 	$('#uploader').removeClass();
+
 	if (count == 0) {
 		$('#uploader').addClass("label label-danger"); }
+
 	if (count == 1) {
 		$('#uploader').addClass("label label-warning"); }
+
 	if (count > 1) {
 		$('#uploader').addClass("label label-success"); }
+
 	if (count == '?') {
 		$('#uploader').addClass("label label-default"); }
+
 	$('#uploader').text(count);
 }
 

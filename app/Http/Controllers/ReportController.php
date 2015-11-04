@@ -116,9 +116,9 @@ class ReportController extends BaseController
 		$data['interpreted'] = '';
 
 		foreach(explode(' ', $data['message']) as $token) {
-			if(strlen($token) >= 5 && ($system = SolarSystem::where('solarSystemName', 'LIKE', "{$token}%")->first())) {
+			if(strlen($token) >= 5 && ($system = SolarSystem::where('solarSystemName', "{$token}")->first())) {
 				$data['systems'][$system->solarSystemID] = $system;
-				$data['interpreted'] .= "<u>{$system->solarSystemName}</u> "; }
+				$data['interpreted'] .= "<a href=\"javascript:mapSystemClicked('{$system->solarSystemName}');\">{$system->solarSystemName}</a> "; }
 			else {$data['interpreted'] .= "{$token} "; } }
 
 		$data['interpreted'] = trim($data['interpreted']);

@@ -12,10 +12,14 @@ Route::group(['middleware' => 'auth'], function() {
 
 });
 
+Route::resource('/eve'   , 'EveController'   , ['only' => ['index'         ]]);
 Route::resource('/map'   , 'MapController'   , ['only' => ['index'         ]]);
 Route::resource('/report', 'ReportController', ['only' => ['index', 'store']]);
+Route::resource('/system', 'SystemController', ['only' => ['index'         ]]);
 
 Route::get('/settings', function() {
+	//if(!$request->ajax()) { app()->abort(400); }
+
 	return json_encode([
 		's-background-image' => rand(1, 8),
 	]);

@@ -10,3 +10,10 @@ body {
 	display: flex;
 	align-items: center;
 }
+
+.tt-dropdown-menu {
+	background-color: white;
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+}

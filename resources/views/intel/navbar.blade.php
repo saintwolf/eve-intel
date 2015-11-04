@@ -1,3 +1,9 @@
+<span class="navbar-form navbar-left">
+	<input type="text" class="form-control text-right typeahead" placeholder="Search System" id="system-search" onkeypress="if (event.keyCode == 13) systemLucky(value);">
+</span>
+
+<li class="navbar-text" style="border-right:1px solid;">&nbsp;</li>
+
 <li class="navbar-text">Polling <button id="poller" class="btn btn-xs btn-info" onclick="pollToggle()">?</span></li>
 <li class="navbar-text">Uploaders <span id="uploader" class="label label-info">?</span></li>
 
@@ -68,6 +74,21 @@
 		<li><a href="#" onclick="drawLoad('Venal');">Venal</a></li>
 		<li><a href="#" onclick="drawLoad('Verge_Vendor');">Verge Vendor</a></li>
 		<li><a href="#" onclick="drawLoad('Wicked_Creek');">Wicked Creek</a></li>
+	</ul>
+</li>
+
+<li class="dropdown">
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Heatmap <b class="caret"></b></a>
+	<ul class="dropdown-menu">
+		<li class="dropdown-header">Off</li>
+		<li><a href="#" onclick="eveMode = 0; eveDraw();">None</a></li>
+		<li class="dropdown-header">Stats (1h)</li>
+		<li><a href="#" onclick="eveMode = 1; eveDraw();">Jumps</a></li>
+		<li class="dropdown-header">Kills (1h)</li>
+		<li><a href="#" onclick="eveMode = 2; eveDraw();">Ships</a></li>
+		<li><a href="#" onclick="eveMode = 3; eveDraw();">Pods</a></li>
+		<li><a href="#" onclick="eveMode = 5; eveDraw();">Ships &amp; pods</a></li>
+		<li><a href="#" onclick="eveMode = 4; eveDraw();">Rats</a></li>
 	</ul>
 </li>
 

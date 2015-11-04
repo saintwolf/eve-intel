@@ -15,3 +15,14 @@
 	</div>
 
 @endsection
+
+@section('javascript')
+	@parent
+	<script>
+		$('body').css('background', '#000000 url("img/bg' + Math.floor((Math.random() * 8) + 1) + '.jpg") center center fixed no-repeat');
+		$('body').css('-webkit-background-size', 'cover');
+		$('body').css('-moz-background-size', 'cover');
+		$('body').css('-o-background-size', 'cover');
+		$('body').css('background-size', 'cover');
+	</script>
+@show

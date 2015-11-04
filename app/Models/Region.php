@@ -4,21 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SolarSystem extends Model
+class Region extends Model
 {
 	/**
 	 * The database table used by the model.
 	 *
 	 * @var string
 	 */
-	protected $table = 'mapSolarSystems';
+	protected $table = 'mapRegions';
 
 	/**
 	 * The primary key used by the model.
 	 *
 	 * @var string
 	 */
-	protected $primaryKey = 'solarSystemID';
+	protected $primaryKey = 'regionID';
 
 	/**
 	 * The attributes that are mass assignable.
@@ -34,13 +34,8 @@ class SolarSystem extends Model
 	 */
 	protected $hidden = [];
 
-	public function reports()
+	public function solarSystems()
 	{
-		return $this->belongsToMany('App\Models\Report', 'report_systems', 'solarSystemID', 'reportID');
-	}
-
-	public function region()
-	{
-		return $this->belongsTo('App\Models\Region', 'regionID', 'regionID');
+		return $this->hasMany('App\Models\SolarSystem', 'regionID', 'regionID');
 	}
 }

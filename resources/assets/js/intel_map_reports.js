@@ -7,10 +7,9 @@ var reportsLatest = {};
 
 $(document).ready(function() {
 	setInterval(function() {
-	   console.log("Timer: clean reports");
-	   reportsClean();
-	   //logsRefresh();
-	   applyData();
+	console.log("Timer: clean reports");
+	reportsClean();
+	applyData(false);
 	}, 60000);
 });
 
@@ -18,13 +17,15 @@ $(document).ready(function() {
 
 function reportsAdd(incoming) {
 	if (incoming.length == 0) {
-		return; }
+	return;
+	}
 
 	for (i in incoming) {
-		reportsLatestUpdate(incoming[i]);  }
+	reportsLatestUpdate(incoming[i]); 
+	}
 
 	reports.push.apply(reports, incoming);
-	applyData();
+	applyData(true);
 }
 
 // ---------------------------------------------------------------
@@ -32,18 +33,16 @@ function reportsAdd(incoming) {
 function reportsLatestUpdate(report) {
 	submitted = report['submittedAt'];
 	for (i in report['systems']) {
-	   system = report['systems'][i];
-	   reportsLatest[system] = submitted;
-
+		system = report['systems'][i];
+		reportsLatest[system] = submitted;
 		if (timestampToAgo(submitted) == "new") {
-			drawDivBlink("blink-" + system); }
-	}
+			drawDivBlink("blink-" + system); } }
 }
 
 function reportsLatestGet(system) {
 	var last = reportsLatest[system];
 	if (last == undefined) {
-	   return 0; }
+		return 0; }
 	return last;
 }
 

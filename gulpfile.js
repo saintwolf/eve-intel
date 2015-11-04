@@ -14,5 +14,5 @@ var elixir = require('laravel-elixir');
 elixir(function(mix) {
 	mix.styles(['bootstrap.min.css', 'font-awesome.min.css', 'select2.min.css', 'app.css']);
 
-	mix.scripts(['jquery.min.js', 'bootstrap.min.js', 'bootbox.min.js', 'select2.min.js', 'intel_*.js']);
+	mix.scripts(['jquery.min.js', 'bootstrap.min.js', 'bootbox.min.js', 'select2.min.js', 'handlebars-v1.3.0.js', 'jquery.cookie.js', 'typeahead.bundle.js', 'simpleheat.min.js', 'intel_*.js']);
 });

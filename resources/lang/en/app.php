@@ -8,7 +8,7 @@ return [
 	'invalid_credentials'      => 'Your credentials are invalid.',
 	'invalid_corporation'      => 'Your character is not in an allowed corporation.',
 	'invalid_uploader_token'   => 'Your uploader token is invalid.',
-	'invalid_uploader_banned'  => 'Your character is banned from submitting reports.',
+	'invalid_uploader_banned'  => 'Your character is banned from using the intel map.',
 	'invalid_report_text'      => 'The text submitted for the report contains bad syntax.',
 	'invalid_report_timestamp' => 'The timestamp submitted for the report must be within the last :seconds seconds.',
 	'invalid_report_filtered'  => 'The message submitted for the report contains a word (:word) in the filter list.',

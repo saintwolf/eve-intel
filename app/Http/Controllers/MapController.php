@@ -11,12 +11,17 @@ class MapController extends BaseController
 	{
 		if(!$request->ajax()) { app()->abort(400); }
 
-		$region = $request->input('region', false);
-		$file   = "app/maps/{$region}.svg.json";
+		$region = $request->input('region', 'Tenal');
 
-		if(!\File::exists(storage_path($file))) {
-			$file = "app/maps/Tenal.svg.json"; }
+		if(($data = \Cache::get("map:{$region}", false))) {
+			return $data; }
 
-		return \File::get(storage_path($file));
+		$file = storage_path("app/maps/{$region}.svg.json");
+
+		if(\File::exists($file) && ($data = \File::get($file))) {
+			\Cache::forever("map:{$region}", $data);
+			return $data; }
+
+		return $data;
 	}
 }
