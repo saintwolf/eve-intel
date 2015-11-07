@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
 	 */
 	public function boot()
 	{
-		//
+		define('REDIS_PATH', 'tcp://127.0.0.1:6379');
 	}
 
 	/**

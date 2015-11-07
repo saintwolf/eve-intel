@@ -11,7 +11,7 @@
 				<div class="panel-body">
 					<p>{!! trans('app.uploader_token', ['token' => auth()->user()->uploader_token]) !!}</p>
 
-					<p>{!! trans('app.uploader_download', ['url' => secure_asset('uploader.py')]) !!}</p>
+					<p>{!! trans('app.uploader_download', ['url' => url('uploader.py')]) !!}</p>
 
 					<p>{!! trans('app.uploader_explain', ['url' => action('ReportController@store'), 'token' => auth()->user()->uploader_token]) !!}</p>
 				</div>

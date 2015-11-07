@@ -4,7 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "277aee617b485ee1f519f75aec91933c",
+    "hash": "cb169356b965c60d125073c19a650a3a",
+    "content-hash": "f7f309ee5c98cf7a688c1746466a8d30",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -113,6 +114,82 @@
                 "preload"
             ],
             "time": "2015-06-28 21:39:13"
+        },
+        {
+            "name": "cognizo/redis-mutex",
+            "version": "v0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cognizo/redis-mutex.git",
+                "reference": "34a54ee56fdcb53349d4a13afe93888a6150d75a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cognizo/redis-mutex/zipball/34a54ee56fdcb53349d4a13afe93888a6150d75a",
+                "reference": "34a54ee56fdcb53349d4a13afe93888a6150d75a",
+                "shasum": ""
+            },
+            "require": {
+                "colinmollenhour/credis": "1.2",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Cognizo": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Graham Floyd",
+                    "email": "gfloyd@catsone.com"
+                }
+            ],
+            "description": "A simple Redis-backed mutex lock.",
+            "homepage": "https://github.com/cognizo/redis-mutex",
+            "time": "2013-10-14 16:48:30"
+        },
+        {
+            "name": "colinmollenhour/credis",
+            "version": "1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/colinmollenhour/credis.git",
+                "reference": "e8a666d1d5cf442c81792bf6e69fabf3b5255ee8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/colinmollenhour/credis/zipball/e8a666d1d5cf442c81792bf6e69fabf3b5255ee8",
+                "reference": "e8a666d1d5cf442c81792bf6e69fabf3b5255ee8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "Client.php",
+                    "Cluster.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Colin Mollenhour",
+                    "email": "colin@mollenhour.com"
+                }
+            ],
+            "description": "Credis is a lightweight interface to the Redis key-value store which wraps the phpredis library when available for better performance.",
+            "homepage": "https://github.com/colinmollenhour/credis",
+            "time": "2013-03-19 02:57:04"
         },
         {
             "name": "danielstjules/stringy",

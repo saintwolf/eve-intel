@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Cognizo\RedisMutex\Lock;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as BaseController;
 use App\Http\Requests\ReportRequest;
@@ -130,7 +131,9 @@ class ReportController extends BaseController
 
 	private function insertReportIntoDatabase($data, $user)
 	{
-		return \DB::transaction(function() use($data, $user) {
+		Lock::get('intel:lock', 10);
+
+		$result = \DB::transaction(function() use($data, $user) {
 			try {
 				$now = \Carbon\Carbon::now('UTC');
 				$report = null;
@@ -154,5 +157,8 @@ class ReportController extends BaseController
 			catch(\Exception $e) {
 				return false; }
 		});
+
+		Lock::release('intel:lock');
+		return $result;
 	}
 }

@@ -12,7 +12,8 @@
         "predis/predis": "^1.0",
         "pusher/pusher-php-server": "^2.2",
         "guzzlehttp/guzzle": "^6.1",
-        "symfony/psr-http-message-bridge": "^0.2.0"
+        "symfony/psr-http-message-bridge": "^0.2.0",
+        "cognizo/redis-mutex": "^0.0.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
