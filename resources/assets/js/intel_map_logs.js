@@ -151,9 +151,10 @@ function logsFilterSystemsRemove(names) {
 
 function logFilterAddRegion() {
 	for (i in drawData['map']['systems']) {
-		var system = drawData['map']['systems'][i]['name'];
-		if($.inArray(system, logsFilterSystems) == -1) {
-			javascript:mapSystemClicked(system); } }
+		logsFilterSystemsAdd([drawData['map']['systems'][i]['name']]); }
+
+	logsFilterRefresh();
+	drawResize();
 }
 
 // ---------------------------------------------------------------
