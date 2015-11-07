@@ -113,6 +113,7 @@ function logsFilterUnknownsSet(value) {
 function logsFilterSystemToggle(name) {
 	logsFilterSystemsToggle([name]);
 }
+
 function logsFilterSystemsToggle(names) {
 	for (i in names) {
 		if (jQuery.inArray(names[i], logsFilterSystems) == -1) {
@@ -121,16 +122,15 @@ function logsFilterSystemsToggle(names) {
 			logsFilterSystemRemove(names[i]); } }
 }
 
-
 function logsFilterSystemAdd(name) {
 	logsFilterSystemsAdd([name]);
 }
+
 function logsFilterSystemsAdd(names) {
 	for (i in names) {
 		if (jQuery.inArray(names[i], logsFilterSystems) == -1) {
 			logsFilterSystems.push(names[i]); } }
 }
-
 
 function logsFilterSystemReplace(name) {
 	logsFilterSystemsReplace([name]);
@@ -140,13 +140,20 @@ function logsFilterSystemsReplace(names) {
 	logsFilterSystemsAdd(names);
 }
 
-
 function logsFilterSystemRemove(name) {
 	logsFilterSystemsRemove([name]);
 }
+
 function logsFilterSystemsRemove(names) {
 	for (i in names) {
 		logsFilterSystems.splice( $.inArray(names[i], logsFilterSystems), 1 ); }
+}
+
+function logFilterAddRegion() {
+	for (i in drawData['map']['systems']) {
+		var system = drawData['map']['systems'][i]['name'];
+		if($.inArray(system, logsFilterSystems) == -1) {
+			javascript:mapSystemClicked(system); } }
 }
 
 // ---------------------------------------------------------------

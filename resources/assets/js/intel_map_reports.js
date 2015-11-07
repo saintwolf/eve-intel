@@ -7,9 +7,9 @@ var reportsLatest = {};
 
 $(document).ready(function() {
 	setInterval(function() {
-	console.log("Timer: clean reports");
-	reportsClean();
-	applyData(false);
+		console.log("Timer: clean reports");
+		reportsClean();
+		applyData(false);
 	}, 60000);
 });
 
@@ -17,12 +17,10 @@ $(document).ready(function() {
 
 function reportsAdd(incoming) {
 	if (incoming.length == 0) {
-	return;
-	}
+		return; }
 
 	for (i in incoming) {
-	reportsLatestUpdate(incoming[i]); 
-	}
+		reportsLatestUpdate(incoming[i]); }
 
 	reports.push.apply(reports, incoming);
 	applyData(true);

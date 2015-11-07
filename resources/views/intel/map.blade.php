@@ -26,6 +26,7 @@
 		<label>Filters</label> <span class="text-muted">click to remove or toggle</span>
 		<span class="pull-right"><button type="button" class="btn btn-link btn-xs" onclick="logsToggle();">hide</button></span>
 		<span class="pull-right"><button type="button" class="btn btn-link btn-xs" onclick="logsFilterSystemsClear(); applyFilter();">clear filters</button></span>
+		<span class="pull-right"><button type="button" class="btn btn-link btn-xs" onclick="logFilterAddRegion();">filter region</button></span>
 		<br>
 		<button type="button" id="filter-unknown" class="btn btn-default btn-xs" onclick="logsFilterUnknownsToggle(); applyFilter();">Unknown</button>
 		<span id="sysfilter"></span>

@@ -65,7 +65,9 @@ function pollSuccess(response) {
 	pollSetSubmitter(response['submitterCount']);
 
 	pollIntervalNew = response['pollInterval'];
-	pollIntervalNew = 6000;
+
+	if(pollIntervalNew % 1 !== 0) {
+		pollIntervalNew = 6000; }
 
 	if (pollInterval != pollIntervalNew) {
 		pollInterval = pollIntervalNew;

@@ -21,12 +21,14 @@ class ReportController extends BaseController
 		$since = $since && is_int($since)
 			? \Carbon\Carbon::createFromTimestamp(strlen($since) === 13 ? $since / 1000 : $since)
 			: \Carbon\Carbon::now('UTC')->subMinutes(10);
+		$diff  = $now->diffInSeconds($since);
 
 		$result = [
 			'timestamp'      => $now->timestamp * 1000,
 			'submitterCount' => User::uploadedRecently()->count(),
 			'pollInterval'   => 5000,
 			'reports'        => [],
+			'diff'           => $now->diffInSeconds($since),
 		];
 
 		$reports = Report::where('created_at', '>=', $since)->get();
@@ -51,9 +53,6 @@ class ReportController extends BaseController
 
 		if($user->isBanned === true) {
 			return response()->make(json_encode(['code' => 401, 'message' => trans('app.invalid_uploader_banned')]), 401); }
-
-		if(!($user = $this->getUserWithUploaderToken($request->input('uploader_token')))) {
-			return response()->make(json_encode(['code' => 401, 'message' => trans('app.invalid_uploader_token')]), 401); }
 
 		if(!($data = $this->validateAndSplitString($request->input('text', false)))) {
 			return response()->make(json_encode(['code' => 400, 'message' => trans('app.invalid_report_text')]), 400); }
@@ -89,7 +88,7 @@ class ReportController extends BaseController
 			'raw'       => $matches[0],
 			'timestamp' => \Carbon\Carbon::createFromFormat('Y.n.j G:i:s', $matches[1]),
 			'submitter' => $matches[2],
-			'message'   => $matches[3],
+			'message'   => trim($matches[3]),
 		];
 	}
 
@@ -114,6 +113,7 @@ class ReportController extends BaseController
 	private function validateAndAddSystems($data, $user)
 	{
 		$data['interpreted'] = '';
+		$data['systems'    ] = [];
 
 		foreach(explode(' ', $data['message']) as $token) {
 			if(strlen($token) >= 5 && ($system = SolarSystem::where('solarSystemName', "{$token}")->first())) {
