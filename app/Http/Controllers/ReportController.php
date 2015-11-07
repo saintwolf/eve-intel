@@ -21,14 +21,12 @@ class ReportController extends BaseController
 		$since = $since && is_int($since)
 			? \Carbon\Carbon::createFromTimestamp(strlen($since) === 13 ? $since / 1000 : $since)
 			: \Carbon\Carbon::now('UTC')->subMinutes(10);
-		$diff  = $now->diffInSeconds($since);
 
 		$result = [
 			'timestamp'      => $now->timestamp * 1000,
 			'submitterCount' => User::uploadedRecently()->count(),
 			'pollInterval'   => 5000,
 			'reports'        => [],
-			'diff'           => $now->diffInSeconds($since),
 		];
 
 		$reports = Report::where('created_at', '>=', $since)->get();
@@ -37,6 +35,7 @@ class ReportController extends BaseController
 				'submitters'               => $report->uploaders->lists('characterName')->toArray(),
 				'reporter'                 => $report->submitter,
 				'textRaw'                  => $report->raw,
+				'textHash'                 => $report->hash,
 				'submitterCountAtCreation' => $report->uploaders->count(),
 				'submittedAt'              => $report->created_at->timestamp * 1000,
 				'systems'                  => $report->solarSystems->lists('solarSystemName')->toArray(),
@@ -94,7 +93,10 @@ class ReportController extends BaseController
 
 	private function validateTimestampIsRecent($data)
 	{
-		return $data['timestamp']->diffInSeconds(\Carbon\Carbon::now('UTC')) < 60 ? $data : false;
+		$now  = \Carbon\Carbon::now('UTC');
+		$diff = $data['timestamp']->diffInSeconds($now);
+
+		return $diff < 60 ? $data : false;
 	}
 
 	private function validateMessageAgainstWordFilters($data, &$word = null)

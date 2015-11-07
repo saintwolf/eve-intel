@@ -135,6 +135,7 @@ function logsFilterSystemsAdd(names) {
 function logsFilterSystemReplace(name) {
 	logsFilterSystemsReplace([name]);
 }
+
 function logsFilterSystemsReplace(names) {
 	logsFilterSystems = [];
 	logsFilterSystemsAdd(names);
@@ -155,6 +156,7 @@ function logFilterAddRegion() {
 
 	logsFilterRefresh();
 	drawResize();
+	applyFilter();
 }
 
 // ---------------------------------------------------------------

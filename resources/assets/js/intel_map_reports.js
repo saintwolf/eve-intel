@@ -16,14 +16,22 @@ $(document).ready(function() {
 // ---------------------------------------------------------------
 
 function reportsAdd(incoming) {
-	if (incoming.length == 0) {
-		return; }
+	if (incoming.length == 0) { return; }
+
+	var latest = reports.slice(Math.max(reports.length - 10, 0));
 
 	for (i in incoming) {
-		reportsLatestUpdate(incoming[i]); }
+		var commit = true;
 
-	reports.push.apply(reports, incoming);
-	applyData(true);
+		for (l in latest) {
+			if (incoming[i].textHash == latest[l].textHash && incoming[i].submittedAt == latest[l].submittedAt) {
+				commit = false;	} }
+
+		if (commit == true) {
+			reports.push(incoming[i]);
+			reportsLatestUpdate(incoming[i]);
+			applyData(true); } }
+
 }
 
 // ---------------------------------------------------------------
