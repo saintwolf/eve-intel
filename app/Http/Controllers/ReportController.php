@@ -84,7 +84,7 @@ class ReportController extends BaseController
 		if($matches[2] === 'Eve System') { return false; }
 
 		return [
-			'hash'      => md5($matches[3]),
+			'hash'      => md5(trim($matches[3])),
 			'raw'       => $matches[0],
 			'timestamp' => \Carbon\Carbon::createFromFormat('Y.n.j G:i:s', $matches[1]),
 			'submitter' => $matches[2],
