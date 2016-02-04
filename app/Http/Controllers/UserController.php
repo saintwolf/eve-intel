@@ -28,24 +28,15 @@ class UserController extends BaseController
 		$password    = $request->input('password'          );
 		$remember_me = $request->input('remember_me', false);
 
-		if((!$data = $this->authenticateWithSeAT($username, $password)) || $data->getStatusCode() !== 200) {
-			return redirect()->back()->withInput()->withErrors([trans('app.invalid_credentials')]); }
+		// Get the user details from seat.
+		$user = $this->authenticateUser($username, $password);
 
-		$data         = json_decode($data->getBody(), true);
-		$corporations = config('seat.corporations');
-
-		if($data['error'] === true) {
-			return redirect()->back()->withInput()->withErrors([trans('app.invalid_credentials')]); }
-
-		if(!isset($data['character']['characterID']) || !isset($data['character']['name'])) {
-			return redirect()->back()->withInput()->withErrors([trans('app.invalid_main_character')]); }
-
-		if(count($corporations) > 0 && !in_array($data['character']['corporationID'], $corporations)) {
-			return redirect()->back()->withInput()->withErrors([trans('app.invalid_corporation')]); }
+		if (is_integer($user)) {
+			return redirect()->back()->withInput()->withErrors([$user['error']]); }
 
 		$user = User::firstOrCreate([
-			'characterID'   => $data['character']['characterID'],
-			'characterName' => $data['character']['name'       ],
+			'characterID'   => $user['characterID'  ],
+			'characterName' => $user['characterName'],
 		]);
 
 		if($user->isBanned) {
@@ -59,23 +50,38 @@ class UserController extends BaseController
 		return redirect()->route('home');
 	}
 
-	private function authenticateWithSeAT($username, $password)
+	/**
+	 * Authenticates a user with seat and returns the user's details or an error code.
+	 * @param  string $username
+	 * @param  string $password
+	 * @return array|integer
+	 */
+	private function authenticateUser($username, $password)
 	{
-		$method = filter_var($username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+		$url   = config('seat.url');
+		$token = config('seat.token');
+		$ssl   = config('seat.verify_ssl');
 
-		try {
-			$guzzle = new \GuzzleHttp\Client;
+		curl_setopt_array(($curl = curl_init()), [
+			CURLOPT_URL            => "{$url}/login",
+			CURLOPT_HTTPHEADER     => [
+				"X-Token: {$token}",
+				"service: intel",
+				"username: {$username}",
+				"password: {$password}",
+			],
+			CURLOPT_POST           => true,
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_SSL_VERIFYHOST => $ssl == true ? 2 : 0,
+			CURLOPT_SSL_VERIFYPEER => $ssl == true ? 1 : 0,
+		]);
 
-			return $guzzle->post(config('seat.url'), [
-				'auth'   => [config('seat.username'), config('seat.password')],
-				'verify' => config('seat.verify_ssl'),
-				'form_params' => [$method    => $username, 'password' => $password],
-			]); }
+		$response = json_decode(curl_exec($curl), true);
+		curl_close($curl);
 
-		catch(\GuzzleHttp\Exception\ClientException $e) {
-			return false; }
+		if (!$response          ) { return 1001; }
+		if (!$response['result']) { return $response['errno']; }
 
-		catch(\Exception $e) {
-			throw app()->abort(500); }
+		return $response['data'];
 	}
 }
