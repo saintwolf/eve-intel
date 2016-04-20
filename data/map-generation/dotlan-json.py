@@ -29,7 +29,11 @@ doc = minidom.parse(fin)  # parseString also exists
 
 def hasStation(sysid):
     for node in doc.getElementsByTagName('symbol'):
-        id = int(node.getAttribute('id')[3:])
+        try:
+            id = int(node.getAttribute('id')[3:])
+        except:
+            id = None
+            pass
         if (sysid != id):
             continue
 
@@ -43,7 +47,11 @@ def hasStation(sysid):
 
 def toRegion(sysid):
     for node in doc.getElementsByTagName('symbol'):
-        id = int(node.getAttribute('id')[3:])
+        try:
+            id = int(node.getAttribute('id')[3:])
+        except:
+            id = None
+            pass
         if (sysid != id):
             continue
 
