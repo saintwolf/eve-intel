@@ -28,13 +28,19 @@ public class MapStorage {
 	}
 
 	public void load() {
-		maps.clear();
-		File dir = new File(C.DATA_DIR + "/maps/");
-		for (File f : dir.listFiles()) {
-			if (!f.isFile()) {
-				continue;
+		try {
+			maps.clear();
+			File dir = new File(C.DATA_DIR + "/maps/");
+			System.out.println("Loading maps from " + dir);
+			for (File f : dir.listFiles()) {
+				if (!f.isFile()) {
+					continue;
+				}
+				System.out.println("Loading maps " + f.getAbsolutePath());
+				load("Map " + f.getName(), f.getName(), f.getAbsolutePath());
 			}
-			load("Map " + f.getName(), f.getName(), f.getAbsolutePath());
+		} catch (java.lang.Exception e) {
+			System.out.println("EXCEPTION " + e);
 		}
 
 		parseSystems();

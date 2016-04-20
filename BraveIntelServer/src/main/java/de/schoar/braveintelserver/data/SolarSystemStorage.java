@@ -14,6 +14,7 @@ public class SolarSystemStorage {
 
 	public void load() {
 		systems.clear();
+		System.out.println("Loading systems from " + C.DATA_DIR + "/filters/systems.lst");
 		new LineReader() {
 			@Override
 			public void line(String line) {
