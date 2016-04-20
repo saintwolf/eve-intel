@@ -18,7 +18,7 @@ function addMenu($act, $id, $link, $name, $c) {
 		<span class="icon-bar"></span>
 		<span class="icon-bar"></span>
 	    </button>
-	    <a class="navbar-brand" href="/"><img style="margin-top: -7px;" src='img/brave.png'></a>
+	    <a class="navbar-brand" href="<?=$cfg_path_base?>"><?=$cfg_header_img_html?></a>
 	</div>
 
 	<div class="navbar-collapse collapse navbar-inverse-collapse navbar-right">
@@ -29,7 +29,7 @@ function addMenu($act, $id, $link, $name, $c) {
 		echo '<li class="dropdown">';
 		    echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown">More <b class="caret"></b></a>';
 		    echo '<ul class="dropdown-menu">';
-			addMenu($active, "map", "/", "Map", "disabled");
+			addMenu($active, "map", $cfg_path_base, "Map", "disabled");
 			addMenu($active, "bridges", "?nav=bridges", "Bridges", "disabled");
 			addMenu($active, "uploader", "?nav=uploader", "Uploader", "disabled");
 			addMenu($active, "help", "?nav=help", "Help", "disabled");
@@ -39,7 +39,7 @@ function addMenu($act, $id, $link, $name, $c) {
 		    echo '</ul>';
 		echo '</li>';
 } else {
-		addMenu($active, "map", "/", "Map", "active");
+		addMenu($active, "map", $cfg_path_base, "Map", "active");
 		addMenu($active, "bridges", "?nav=bridges", "Bridges", "active");
 		addMenu($active, "uploader", "?nav=uploader", "Uploader", "active");
 		addMenu($active, "help", "?nav=help", "Help", "active");

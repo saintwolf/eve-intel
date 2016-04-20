@@ -1,3 +1,10 @@
 BraveIntelServer/.settings
 BraveIntelServer/build/classes/de
-
+/BraveIntelServer/target/
+/data/map-generation/dotlan/*.json
+/data/map-generation/dotlan/*.svg
+/data/brave-intel-server/maps/*.json
+/data/alliance-generation/*.txt
+/data/jb-generation/jb.svg.json
+/webroot/config.php
+/webroot/auth/vendor

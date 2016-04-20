@@ -1,6 +1,6 @@
 // --------------------------------------------------------
 
-var settingsUrl = '/BraveIntelServer/user';
+var settingsUrl = '/EveIntelServer/user';
 
 var settings = {};
 

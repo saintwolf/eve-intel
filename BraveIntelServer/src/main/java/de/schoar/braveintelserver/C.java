@@ -9,7 +9,7 @@ public class C {
 
 	public final static String DATA_DIR = "/opt/brave-intel-server";
 
-	public final static String AUTH_COOKIE_NAME = "brave-auth-intel";
+	public final static String AUTH_COOKIE_NAME = "eve-intel-server";
 
 	public final static long POLL_INTERVAL_BASE = 1000 * 6;
 	public final static long POLL_INTERVAL_USER = 60;

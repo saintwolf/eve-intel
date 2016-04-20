@@ -15,7 +15,7 @@
 
 	<div class="tab-pane active in" id="overview">
 	    <li class="list-group-item">
-		The <i>BRAVE Intel Map</i> provides up-to-date information on <i>HERO</i> and known <i>hostile</i> jump bridges.
+		The <i><?=$cfg_alliance_name?> Intel Map</i> provides up-to-date information on <i>friendly</i> and known <i>hostile</i> jump bridges.
 		<h6>How to use a bridge</h6>
 		<ol>
 		    <li>Go to a system which has a jumpbridge</li>
@@ -24,7 +24,7 @@
 		    <li>Be within 2500m, right click the jumpbridge and select <i>jump</i></li>
 		</ol>
 		<h6>Report wrong data</h6>
-		If you find any errors or have intel on hostile bridge locations, get in touch with <a href="http://evewho.com/pilot/kiu+Nakamura">kiu Nakamura</a> or <a href="http://evewho.com/pilot/Serinus+Gareth">Serinus Gareth</a>.
+		If you find any errors or have intel on hostile bridge locations, get in touch with <?=$cfg_intel_it_contacts?>.
 		<h6>3rd party tools</h6>
 		The list of jumpbridges can be imported into any tool supporting <i>DOTLAN</i> or <i>GTS</i> format. Select the desired format from the tabs above.
 	    </li>
@@ -38,10 +38,10 @@
 		<ol>
 		    <li>Go to <a href="https://evemaps.dotlan.net/bridges">https://evemaps.dotlan.net/bridges</a></li>
 		    <li>Click <i>Create network</i></li>
-		    <li>Fill in <i>HERO</i> or <i>HOSTILE</i> as <i>Network name</i> and click <i>Create network</i></li>
+		    <li>Fill in <i>friendly</i> or <i>HOSTILE</i> as <i>Network name</i> and click <i>Create network</i></li>
 		    <li>Paste the bridge list found below into <i>Network Import</i>, tick <i>Clear Bridges on Import</i> and click <i>Import</i></li>
 		    <li>Go to <a href="https://evemaps.dotlan.net/bridges">https://evemaps.dotlan.net/bridges</a></li>
-		    <li>Click <i>HERO</i> or <i>HOSTILE</i> network</li>
+		    <li>Click <i>friendly</i> or <i>HOSTILE</i> network</li>
 		    <li>Click on a region, e.g. <i>Catch</i></li>
 		    <li>Save bookmark for future use</li>
 		</ol>
@@ -49,7 +49,7 @@
 		<h6>How to Update</h6>
 		<ol>
 		    <li>Go to <a href="https://evemaps.dotlan.net/bridges">https://evemaps.dotlan.net/bridges</a></li>
-		    <li>Click <i>HERO</i> or <i>HOSTILE</i> network</li>
+		    <li>Click <i>friendly</i> or <i>HOSTILE</i> network</li>
 		    <li>Paste the bridge list found below into <i>Network Import</i>, tick <i>Clear Bridges on Import</i> and click <i>Import</i></li>
 		</ol>
 		<h6>Data Export (<span class="text-success">friendly</span>)</h6>

@@ -1,23 +1,67 @@
-<?php if (!defined('RECRUIT')) die('go away'); ?>
+<?php if (!defined('INTEL')) die('go away recruit'); ?>
 <?php
+
+////////////////////////////////////
+//// Server & Database Settings ////
 
 $cfg_sql_url = 'mysql:host=localhost;dbname=intel';
 $cfg_sql_user = 'root';
 $cfg_sql_pass = 'root';
 
-$cfg_core_endpoint = 'https://core.braveineve.com/api';
-
-$cfg_url_base = 'http://intel.bravecollective.com';
+// Set this to your server hostname and http prefix,   Include ports if necessary.
+//   i.e.  $cfg_server_address = 'http://someserver.com'
+$cfg_server_address = '';
+// next block can remain unmodified
+$cfg_path_base = '/intel';
+$cfg_url_base = $cfg_server_address . $cfg_path_base;
 $cfg_url_auth_init = $cfg_url_base . '/?nav=init';
 $cfg_url_auth_success = $cfg_url_base . '/?nav=verify';
 $cfg_url_auth_fail = $cfg_url_base . '/?nav=error';
 
+
+///////////////////////////////////////////
+//// Alliance/Coalition Customizations ////
+
+// $cfg_alliance_name = 'Brave';
+$cfg_alliance_name = 'SLYCE';
+
+// Where to download the uploader tool
+$cfg_intel_download_link = '/path/to/IntelReporter.zip';
+// Image file to use as favorite icon, the tiny one that appears in the browser url bar
+$cfg_favicon_url = '/intel/img/slyce-logo-150.png';
+// Image to use in page header, along with whatever resize and styling code is required
+$cfg_header_img_html = '<img style="margin-top: -7px; height: 42px;" src="img/slyce-logo-150.png">';
+// Contact(s) that may be references on help or jump bridge pages
+$cfg_intel_it_contacts = '<a href="http://evewho.com/pilot/kiu+Nakamura">kiu Nakamura</a> or <a href="http://evewho.com/pilot/Serinus+Gareth">Serinus Gareth</a>';
+
+/////////////////////////////////////////////////////
+//// Authorization Scheme Selection and Settings ////
+
+// Authorization scheme - must match template and auth.php suffixes 
+// $cfg_auth_type = 'brave_core';
+$cfg_auth_type = 'eve_sso';
+
+// BRAVE core services settings - ignored for SSO
+$cfg_core_endpoint = 'https://core.braveineve.com/api';
 $cfg_core_application_id = '';
 $cfg_core_public_key = '';
 $cfg_core_private_key = '';
 
-$cfg_cookie_name = 'brave-auth-intel';
-$cfg_cookie_https_only = true;
+// file with alliance character ids for sso verification
+$cfg_alliance_file = '/opt/bravecollective-intel/data/alliance-generation/alliance_characters.txt';
+
+// eve sso auth settings - you must register your copy of this app with CCP
+$cfg_app_client_id = 'YOURIDHERE';
+$cfg_app_secret = 'YOURSECRETHERE';
+// safe to leave nextline unchanged
+$cfg_app_callback = $cfg_url_base . '/auth/getrefreshtoken.php';
+
+
+////////////////////////////////////////
+//// Cookie settings - ok to ignore ////
+
+$cfg_cookie_name = 'eve-intel-auth';
+$cfg_cookie_https_only = false;
 
 $cfg_expire_session = (60 * 60 * 24 * 1);
 $cfg_expire_uploader = (60 * 60 * 24 * 1);

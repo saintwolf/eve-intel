@@ -47,10 +47,9 @@ MySQL, PHP, Tomcat, Python
 	- Update location of brave-intel-server data directory
 
 - Deploy
-    1. Import BraveIntelServer project into eclipse
-    2. Build project
-    3. Export as BraveIntelServer.war file
-    4. Copy BraveIntelServer.war into tomcat webapps folder
+    1. cd BraveIntelServer
+    2. mvn clean package
+    4. Copy target/EveIntelServer.war into tomcat webapps folder
 
 
 ## Frontend ##
@@ -61,11 +60,16 @@ MySQL, PHP, Tomcat, Python
     1. Copy config.php.dist to config.php
     2. Edit config.php
 	- Update mysql connection settings
-	- Update brave core tokens
+        - Update alliance/coalition specific display settings, add custom graphics logo
+	- Choose authorization scheme, then do one of ...
+	    - Update brave core tokens
+	    - Update eve SSO tokens
+    3. Customize default region by setting 'map' in webroot/js/intel_map_draw.js
+    4. Customize region list in webroot/tpl/tpl_nav_map.php (duplicate most relevant regions at top of list)
 
 - Auth
-    1. cd webroot/auth
-    2. composer install
+    1. If using brave core authorization.
+    2. cd webroot/auth && composer install
 
 
 ## Uploader ##

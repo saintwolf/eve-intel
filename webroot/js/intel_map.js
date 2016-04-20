@@ -1,6 +1,6 @@
 // ---------------------------------------------------------------
 
-var queryURL = "/BraveIntelServer/systemsearch?q=";
+var queryURL = "/EveIntelServer/systemsearch?q=";
 
 var timerUI = 0;
 

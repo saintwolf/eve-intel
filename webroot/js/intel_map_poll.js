@@ -1,6 +1,6 @@
 // ---------------------------------------------------------------
 
-var pollUrl = '/BraveIntelServer/report';
+var pollUrl = '/EveIntelServer/report';
 
 var pollLast = 0;
 var pollId = 0;

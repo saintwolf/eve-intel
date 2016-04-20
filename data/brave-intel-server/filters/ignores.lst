@@ -1,3 +1,5 @@
 # Place line separated regex here to be ignored by any pattern matching
 # Must be lowercase
-
+clear
+clr
+status

@@ -1,5 +1,8 @@
 <?php
 
+ini_set('display_errors', 'On');
+error_reporting(E_ALL);
+
 define('INTEL', 23);
 
 require("config.php");
@@ -12,6 +15,7 @@ try {
 
 require("tpl/tpl.php");
 require("auth/auth.php");
+require("auth/auth_" . $cfg_auth_type . ".php");
 
 $authResult = authCheck();
 
@@ -37,6 +41,7 @@ if ($authResult === false) {
 	    tpl_auth_error();
 	    tpl_footer(array());
 	}
+	// if true authInit() sets location header for redirect
 	return;
     }
 
@@ -57,6 +62,11 @@ if ($authResult === false) {
 	    tpl_footer(array());
 	}
 
+	// if true authVerify() sets location header for redirect
+
+	return;
+    }
+
     if ($pNav == "error") {
 	tpl_header();
 	tpl_nav_empty();
@@ -65,8 +75,11 @@ if ($authResult === false) {
 	return;
     }
 
-	return;
-    }
+    tpl_header();
+    tpl_nav_empty();
+    tpl_error();
+    tpl_footer(array());
+    return;
 
 } else {
     $authCharId = $authResult[0];

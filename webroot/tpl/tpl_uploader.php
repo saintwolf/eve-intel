@@ -7,20 +7,20 @@
     <div class="panel panel-default">
 	<div class="panel-body">
 	    <p>
-		Please be active reporting meaningful intel (inlcuding a system name) through our coalition intel channel <i>Intel - HERO</i>.<br>
-		In addition we need volunteers running the <i>Brave Intel Reporter</i>. If nobody uploads intel (keep an eye on the <i>Uploader</i> count on the map) our map will stay empty.
+		Please be active reporting meaningful intel (inlcuding a system name) through our coalition and blue intel channels.<br>
+		In addition we need volunteers running the <i><?=$cfg_alliance_name?> Intel Reporter</i>. If nobody uploads intel (keep an eye on the <i>Uploader</i> count on the map) our map will stay empty.
 	    </p>
 	</div>
     </div>
 
-    <h4>Brave Intel Reporter</h4>
+    <h4><?=$cfg_alliance_name?> Intel Reporter</h4>
     <div class="panel panel-default">
 	<div class="panel-body">
 	    <p>
-		The <i>Brave Intel Reporter</i> is a Windows tool uploading data from in-game intel channels to this website.<br>
+		The <i><?=$cfg_alliance_name?> Intel Reporter</i> is a Windows tool uploading data from in-game intel channels to this website.<br>
 		Please keep it running while your Eve client is active and accept any updates distributed through its auto-update mechanism.
 	    </p>
-	    <strong>Download: <a href="http://serinus.us/eve/braveintel/BraveIntelReporter.application">Brave Intel reporter</a></strong> <small>by <a href="http://evewho.com/pilot/Serinus+Gareth">Serinus Gareth</a></small>
+	    <strong>Download: <a href="<?=$cfg_intel_download_link?>"><?=$cfg_alliance_name?> Intel reporter</a></strong> <small>by <a href="http://evewho.com/pilot/Serinus+Gareth">Serinus Gareth</a></small>
 	</div>
     </div>
 

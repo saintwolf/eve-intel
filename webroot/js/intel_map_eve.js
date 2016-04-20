@@ -1,7 +1,7 @@
 // ---------------------------------------------------------------
 
 var eveData = {};
-var eveUrl = "/BraveIntelServer/evedata";
+var eveUrl = "/EveIntelServer/evedata";
 var eveInterval = 90000;
 var eveHeat;
 var eveMode = 0;

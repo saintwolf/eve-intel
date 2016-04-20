@@ -1,6 +1,6 @@
 // ---------------------------------------------------------------
 
-var drawUrl = "/BraveIntelServer/map";
+var drawUrl = "/EveIntelServer/map";
 var drawData = {};
 var drawMapAll = true;
 var drawCacheData;
@@ -29,7 +29,7 @@ $(document).ready(function() {
 
     var map = $.cookie('brave-intel-region');
     if (!map) {
-	map = "Fountain";
+	map = "Wicked Creek";
     }
     drawLoad(map);
 });
