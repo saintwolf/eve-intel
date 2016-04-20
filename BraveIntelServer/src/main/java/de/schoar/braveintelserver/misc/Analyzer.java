@@ -111,12 +111,15 @@ public class Analyzer {
 			String needle = part.toLowerCase();
 
 			if (findInList(bans, needle)) {
+				// System.out.println("banned - " + line);
 				return false;
 			}
 
 			if (findInList(ignores, needle)) {
-				sb.append(all);
-				continue;
+				// System.out.println("ignored - " + line + " ALL: " + all);
+				sb = new StringBuffer(line);
+				report.getSystems().clear();
+				break;
 			}
 
 			String sub = replaces.get(needle);
