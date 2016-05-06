@@ -1,12 +1,7 @@
 package de.schoar.braveintelserver.misc;
 
 import java.net.URL;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,6 +15,7 @@ public class Analyzer {
 	private Set<String> ignores = new TreeSet<String>();
 	private Set<String> highlights = new TreeSet<String>();
 	private Set<String> systems = new TreeSet<String>();
+  private Map<String, String> regions = new HashMap<String, String>();
 	private Set<String> bans = new TreeSet<String>();
 	private Map<String, String> replaces = new HashMap<String, String>();
 
@@ -38,7 +34,7 @@ public class Analyzer {
 			}
 		}.load("Bans", C.DATA_DIR + "/filters/bans.lst");
 
-		systems.clear();
+		regions.clear();
 		new LineReader() {
 			@Override
 			public void line(String line) {
@@ -47,9 +43,10 @@ public class Analyzer {
 				if (split.length != 2) {
 					return;
 				}
-				systems.add(split[0]);
+				regions.put(split[0], split[1]);
 			}
 		}.load("Solar Systems", C.DATA_DIR + "/filters/systems.lst");
+    systems = regions.keySet();
 
 		ignores.clear();
 		new LineReader() {
@@ -133,6 +130,7 @@ public class Analyzer {
 			}
 
 			List<String> matchedSystems = findMatchingSystems(needle);
+      report.getRegions().addAll(lookupRegions(matchedSystems));
 			report.getSystems().addAll(matchedSystems);
 			if (!matchedSystems.isEmpty()) {
 				String sys = new Gson().toJson(matchedSystems);
@@ -167,6 +165,17 @@ public class Analyzer {
 		}
 		return matched;
 	}
+
+  private List<String> lookupRegions(List<String> systems) {
+    List<String> r = new ArrayList<String>();
+    if (null != systems) {
+      for (String s : systems) {
+        if (regions.containsKey(s))
+          r.add(regions.get(s));
+      }
+    }
+    return r;
+  }
 
 	private boolean findInList(Set<String> list, String needle) {
 		for (String hay : list) {

@@ -8,3 +8,5 @@ BraveIntelServer/build/classes/de
 /data/jb-generation/jb.svg.json
 /webroot/config.php
 /webroot/auth/vendor
+.idea
+*.iml
