@@ -294,6 +294,10 @@ function drawSystemNames(ctx) {
     ctx.shadowBlur = 2;
     ctx.font = "9pt Helvetica";
 
+    border = 12;
+    dw = 32 * drawScale;
+    dh =  8 * drawScale;
+
     for (i in drawData['map']['systems']) {
 	x = Math.floor(drawData['map']['systems'][i]['x']);
 	y = Math.floor(drawData['map']['systems'][i]['y']);
@@ -303,9 +307,19 @@ function drawSystemNames(ctx) {
 	ctx.fillStyle = nameToColor();
 	ctx.fillText(name, x + drawSystemOffsetX + drawSystemSize/2 + 8, y + drawSystemOffsetY - 6);
 
-	if (region != undefined) {
+	if (region) {
 	    ctx.fillStyle = connectionToColor('jr');
-	    ctx.fillText(region, x + drawSystemOffsetX + drawSystemSize/2 + 8, y + drawSystemOffsetY + 16);
+	    dx = x + drawSystemOffsetX + drawSystemSize/2 + 8;
+	    dy = y + drawSystemOffsetY + 16;
+	    ctx.fillText(region, dx, dy);
+
+	    dx = (dx - border/2) * drawScale;
+	    dy = (dy - border/2) * drawScale;
+	    dw = region.length * 7 * drawScale;
+	    adj = "<div id='adjacent-" + name + "'";
+	    adj += " style='position: absolute; left: " +  dx + "px; top: " +  dy + "px; width: " + dw + "px; height: " + dh + "px; cursor: pointer; z-index:23; background-color: #FF0000; opacity: 0; '";
+	    adj += " onclick='drawLoad(\"" + region.replace(/\s+/g, '_') + "\");'></div>";
+	    $("#map").append(adj);
 	}
 
     }
@@ -365,7 +379,7 @@ function drawDivs() {
     dw = (drawSystemSize + border) * drawScale;
     dh = (drawSystemSize + border) * drawScale;
 
-    $("#map > div").each(function() {
+    $("#map > div [id^=blink-]").each(function() {
 	$(this).remove();
     });
 
