@@ -13,6 +13,7 @@ import de.schoar.braveintelserver.data.Report;
 public class Analyzer {
 
 	private Set<String> ignores = new TreeSet<String>();
+	private Set<String> skips = new TreeSet<String>();
 	private Set<String> highlights = new TreeSet<String>();
 	private Set<String> systems = new TreeSet<String>();
   private Map<String, String> regions = new HashMap<String, String>();
@@ -55,6 +56,14 @@ public class Analyzer {
 				ignores.add(line);
 			}
 		}.load("Ignore List", C.DATA_DIR + "/filters/ignores.lst");
+
+		skips.clear();
+		new LineReader() {
+			@Override
+			public void line(String line) {
+				skips.add(line);
+			}
+		}.load("Skips List", C.DATA_DIR + "/filters/skipwords.lst");
 
 		highlights.clear();
 		new LineReader() {
@@ -117,6 +126,12 @@ public class Analyzer {
 				sb = new StringBuffer(line);
 				report.getSystems().clear();
 				break;
+			}
+
+			if (findInList(skips, needle)) {
+				// System.out.println("skipped word - " + line);
+				sb.append(all);
+				continue;
 			}
 
 			String sub = replaces.get(needle);
