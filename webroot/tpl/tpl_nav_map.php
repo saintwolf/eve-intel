@@ -1,23 +1,30 @@
 <?php if (!defined('INTEL')) die('go away'); ?>
 
 <!-- Navigation MAP -->
-    <span class="navbar-form navbar-left">
-	<input type="text" class="form-control text-right typeahead" placeholder="Search System" id="system-search" onkeypress="if (event.keyCode == 13) systemLucky(value);">
-    </span>
 
-    <li class="navbar-text" style="border-right:1px solid;">&nbsp;</li>
+    <li><a href="javascript:logsRegionsClicked([$('#region-name').text().replace(/ /g,'_')])"><span id="region-name"></span></a></li>
 
-    <li class="navbar-text">Polling <button id="poller" class="btn btn-xs btn-info" onclick="pollToggle()">?</span></li>
+    <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control text-right typeahead" placeholder="Search System" id="system-search" onkeypress="if (event.keyCode == 13) systemLucky(value);" onfocus="this.value='';">
+      </div>
+    </form>
+
+
+    <li class="navbar-text">Polling <button id="poller" class="btn btn-xs btn-info" onclick="pollToggle()">?</button></li>
     <li class="navbar-text">Uploaders <span id="uploader" class="label label-info">?</span></li>
 
     <li class="dropdown">
-	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Region <b class="caret"></b></a>
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Region <span class="caret"></span></a>
 	<ul class="dropdown-menu"  style="overflow: hidden; overflow-y: auto; max-height: 400px;">
 <li><a href="#" onclick="drawLoad('Wicked_Creek');">Wicked Creek</a></li>
 <li><a href="#" onclick="drawLoad('Scalding_Pass');">Scalding Pass</a></li>
 <li><a href="#" onclick="drawLoad('Detorid');">Detorid</a></li>
 <li class="divider"></li>
-<li><a href="#" onclick="drawLoad('Tribute');">Tribute</a></li>
+<li><a href="#" onclick="drawLoad('Deklein');">Deklein</a></li>
+<li><a href="#" onclick="drawLoad('Fade');">Fade</a></li>
+<li><a href="#" onclick="drawLoad('Venal');">Venal</a></li>
+<li><a href="#" onclick="drawLoad('Branch');">Branch</a></li>
 <li class="divider"></li>
 <li><a href="#" onclick="drawLoad('Aridia');">Aridia</a></li>
 <li><a href="#" onclick="drawLoad('Black_Rise');">Black Rise</a></li>
@@ -89,7 +96,7 @@
 
 
     <li class="dropdown">
-	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Heatmap <b class="caret"></b></a>
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Heatmap <span class="caret"></span></a>
 	<ul class="dropdown-menu">
 	    <li class="dropdown-header">Off</li>
 	    <li><a href="#" onclick="eveMode = 0; eveDraw();">None</a></li>
@@ -105,7 +112,7 @@
 
 
     <li class="dropdown">
-	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Legend <b class="caret"></b></a>
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Legend <span class="caret"></span></a>
 	<ul class="dropdown-menu">
 
 	    <li class="dropdown-header">Systems</li>
@@ -129,6 +136,4 @@
 	</ul>
     </li>
 
-
-    <li class="navbar-text" style="border-right:1px solid;">&nbsp;</li>
 <!-- Navigation MAP -->

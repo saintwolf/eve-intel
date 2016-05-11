@@ -1,7 +1,9 @@
 // ---------------------------------------------------------------
 
 var logsFilterSystems = [];
+var logsFilterRegions = [];
 var logsFilterUnknowns = true;
+var logsFilterSuspended = false;
 var logsDisplayedLatest = 0;
 
 // ---------------------------------------------------------------
@@ -38,29 +40,33 @@ function logsRefresh(sound) {
 
     var logsAddedLatest = 0;
     jQuery.each(reports, function(i, report) {
-	if (!logsFilterUnknowns && report['systems'].length == 0) {
-	    return;
-	}
-
-	if (logsFilterUnknowns && report['systems'].length == 0) {
-	    logsAddedLatest = Math.max(logsAddedLatest, report['submittedAt']);
-	    logsAdd(report);
-	    return;
-	}
-
-	if (logsFilterSystems.length == 0) {
-	    logsAddedLatest = Math.max(logsAddedLatest, report['submittedAt']);
-	    logsAdd(report);
-	    return;
-	}
-
-	for (i in report['systems']) {
-	    if (jQuery.inArray(report['systems'][i], logsFilterSystems) != -1) {
-		logsAddedLatest = Math.max(logsAddedLatest, report['submittedAt']);
-		logsAdd(report);
-		return;
+        var addIt = false;
+        if (logsFilterSuspended) { 
+           addIt = true;
+        } else if (report['systems'].length == 0 && report['regions'].length == 0) {
+	   addIt = logsFilterUnknowns;
+	} else if (logsFilterSystems.length == 0 && logsFilterRegions.length == 0) {
+           addIt = true;
+	} else {
+	    for (i in report['regions']) {
+	        if (jQuery.inArray(report['regions'][i], logsFilterRegions) != -1) {
+		    addIt = true;
+                    break;
+	        }
 	    }
-	}
+            if (!addIt) {
+	        for (i in report['systems']) {
+	            if (jQuery.inArray(report['systems'][i], logsFilterSystems) != -1) {
+		        addIt = true;
+                        break;
+	            }
+	        }
+            }
+        }
+        if (addIt) {
+            logsAddedLatest = Math.max(logsAddedLatest, report['submittedAt']);
+            logsAdd(report);
+        }
     });
 
 
@@ -76,7 +82,16 @@ function logsAdd(report) {
 
     cnt = "";
     cnt += '<tr>';
-    cnt += '<td class="small"><span class="ago pull-right" timestamp="' + report['submittedAt'] + '">...</span></td>';
+    cnt += '<td class="small"><a href="#" ';
+    if ( report['systems'] && report['systems'][0] ) {
+        cnt += "onclick=\"systemLucky('" + report['systems'][0] + "')\" title=\"Go to " + report['systems'][0] + " on map.\"";
+    }
+    cnt += '><span class="ago pull-right" timestamp="' + report['submittedAt'] + '">...</span></a></td>';
+    cnt += '<td class="small">';
+    if ( report['regions'] && report['regions'][0] ) {
+        cnt += "<a href='javascript:logsRegionsClicked([\"" + report['regions'][0] + "\"]);' title=\"Add " + report['regions'][0] + ' to filtered systems."><span class="text-muted pull-right">' + report['regions'][0].substring(0,3) + '</span></a>';
+    }
+    cnt += '</td>';
     cnt += '<td class="small">' + report['textInterpreted'] + ' <span class="text-muted pull-right">' + report['reporter'] + '</span></td>'
     cnt += '</tr>';
     $('#logs tr:first').after(cnt);
@@ -103,6 +118,7 @@ function logsRefreshTimestamps() {
 
 function logsFilterSystemsClear() {
     logsFilterSystemsReplace([]);
+    logsFilterRegionsReplace([]);
     logsFilterUnknownsSet(true);
 }
 
@@ -110,6 +126,10 @@ function logsFilterSystemsClear() {
 
 function logsFilterUnknownsToggle() {
     logsFilterUnknowns = !logsFilterUnknowns;
+}
+
+function logsFilterSuspendToggle() {
+    logsFilterSuspended = !logsFilterSuspended;
 }
 
 function logsFilterUnknownsSet(value) {
@@ -164,14 +184,68 @@ function logsFilterSystemsRemove(names) {
 
 // ---------------------------------------------------------------
 
+function logsFilterRegionToggle(name) {
+    logsFilterRegionsToggle([name]);
+}
+function logsFilterRegionsToggle(names) {
+    for (i in names) {
+	if (jQuery.inArray(names[i], logsFilterRegions) == -1) {
+	    logsFilterRegionAdd(names[i]);
+	} else {
+	    logsFilterRegionRemove(names[i]);
+	}
+    }
+}
+
+
+function logsFilterRegionAdd(name) {
+    logsFilterRegionsAdd([name]);
+}
+function logsFilterRegionsAdd(names) {
+    for (i in names) {
+	if (jQuery.inArray(names[i], logsFilterRegions) == -1) {
+	    logsFilterRegions.push(names[i]);
+	}
+    }
+}
+
+
+function logsFilterRegionReplace(name) {
+	logsFilterRegionsReplace([name]);
+}
+function logsFilterRegionsReplace(names) {
+    logsFilterRegions = [];
+    logsFilterRegionsAdd(names);
+}
+
+
+function logsFilterRegionRemove(name) {
+    logsFilterRegionsRemove([name]);
+}
+function logsFilterRegionsRemove(names) {
+    for (i in names) {
+	logsFilterRegions.splice( $.inArray(names[i], logsFilterRegions), 1 );
+    }
+}
+
+// ---------------------------------------------------------------
+
 function logsFilterRefresh() {
     logsFilterSystems.sort();
+    logsFilterRegions.sort();
 
     $('#filter-unknown').removeClass();
     if (logsFilterUnknowns) {
 	$('#filter-unknown').addClass("btn btn-xs btn-success");
     } else {
 	$('#filter-unknown').addClass("btn btn-xs btn-danger");
+    }
+
+    $('#filter-suspend').removeClass();
+    if (logsFilterSuspended) {
+	$('#filter-suspend').addClass("btn btn-xs btn-danger");
+    } else {
+	$('#filter-suspend').addClass("btn btn-xs btn-success");
     }
 
     $("#sysfilter button").each(function( index ) {
@@ -182,6 +256,16 @@ function logsFilterRefresh() {
 	cnt = '<button type="button" class="btn btn-xs btn-success" onclick="logsFilterSystemRemove(\'' + logsFilterSystems[i] + '\'); applyFilter();">' + logsFilterSystems[i] + '</button> ';
 	$('#sysfilter').append(cnt);
     }
+
+    $("#regionfilter button").each(function( index ) {
+	$(this).remove();
+    });
+
+    for (i in logsFilterRegions) {
+	cnt = '<button type="button" class="btn btn-xs btn-success" onclick="logsFilterRegionRemove(\'' + logsFilterRegions[i] + '\'); applyFilter();">' + logsFilterRegions[i] + '</button> ';
+	$('#regionfilter').append(cnt);
+    }
 }
 
 // ---------------------------------------------------------------
+

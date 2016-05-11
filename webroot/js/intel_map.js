@@ -147,6 +147,19 @@ function logsSystemsClicked(names) {
     applyFilter();
 }
 
+function logsRegionsClicked(names) {
+    switch (settingsGet('s-logs-action-select-filter')) {
+	case '0':
+	    logsFilterRegionsAdd(names);
+	    break;
+	case '1':
+	    logsFilterRegionsReplace(names);
+	    break;
+    }
+
+    applyFilter();
+}
+
 // ---------------------------------------------------------------
 
 function timestampToAgo(timestamp) {

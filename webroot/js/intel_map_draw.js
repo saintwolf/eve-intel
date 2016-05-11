@@ -39,7 +39,10 @@ $(document).ready(function() {
 function drawLoad(map, system) {
     drawMarkerSystem = system;
 
+    $('#region-name').text(map.replace(/_/g,' '));
+
     if (drawRegion == map) {
+        drawResize();
 	drawMarker();
 	return;
     }
@@ -370,6 +373,7 @@ function drawMarker() {
 	dy = (y + drawSystemOffsetY) * drawScale - border/2;
 
 	$("#marker").css("left", dx).css("top", dy);
+	$("#marker").stop();
 	$("#marker").animate({opacity: 1}, 200).animate({opacity: 0}, 7000);
     }
 }
