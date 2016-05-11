@@ -3,6 +3,22 @@
 <!-- Help -->
 <div class="container">
 
+    <h3>About</h3>
+    <ul class="list-group">
+	<li class="list-group-item">
+        <p>
+           The original intel reporter was written by <a href="http://evewho.com/pilot/kiu+Nakamura">kiu Nakamura</a> of
+           Brave Alliance.   Sources and more information can be found on
+           <a href="http://github.com/kiu/bravecollective-intel">github.com</a>.
+        </p>
+        <p>
+           This version contains bugfixes, enhancements, and easier alliance customization.   It too can be found
+           on <a href="http://github.com/islaytzash/bravecollective-intel">github.com</a>.
+        </p>
+	</li>
+    </ul>
+
+
     <h3>Components</h3>
     <ul class="list-group">
 	<li class="list-group-item">

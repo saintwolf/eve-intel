@@ -1,16 +1,22 @@
 <?php if (!defined('INTEL')) die('go away'); ?>
 
-    <div style="font-size:70%; position:fixed; bottom:1px; right:1px; z-index:-23;" ><a href="http://evewho.com/pilot/kiu+Nakamura">kiu Nakamura</a> &bull; <a href="http://github.com/kiu/bravecollective-intel">github.com</a></div>
-
-    <script src="js/jquery-1.10.2.min.js"></script>
-    <script src="js/jquery.cookie.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <!-- script src="js/jquery.cookie.js"></script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <?php
     foreach ($pScripts as $file) {
 	echo "  <script src='" . $file . "'></script>\n";
     }
 ?>
+
+    <script type="text/javascript">
+    jQuery(document).ready(function() {
+        // Enable all tooltips
+        jQuery('[data-toggle="tooltip"]').tooltip();
+    });
+    </script>
 
   </body>
 
