@@ -1,10 +1,11 @@
-bravecollective-intel
-=====================
+eve-intel : Eve Intel Map Viewer
+================================
 
-Brave Intel Map
+This is a version of the Brave Intel Map that is more easily customizable for your alliance.
+It also includes a few enhancements.
 
-Website: http://intel.bravecollective.com
+For a compatible data uploader, checkout https://github.com/IslayTzash/EveIntelReporter
 
-see demo.png
+For build and install instructions, see [INSTALL.md](https://github.com/IslayTzash/eve-intel/blob/master/INSTALL.md) in this directory.
 
-For a compatible data uploader, checkout https://github.com/Serinus1/BraveReporter
+![screencaps](https://raw.githubusercontent.com/IslayTzash/eve-intel/master/demo.png "Screencaps")
