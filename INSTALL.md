@@ -69,7 +69,12 @@ Frontend
 2. Auth
   - If using brave core authorization.
     - `cd webroot/auth && composer install`
-
+  - If using alliance SSO, you may need to do these steps when your alliance membership changes or setup a periodic cron job
+    - `cd data/alliance-generation`
+    - edit `evewho.py` and set `allianceId` to your alliance id, an easy way to find it is from the URL of your alliance's zkillboard page - i.e. https://zkillboard.com/alliance/1042504553/
+    - `./evewho.py`
+    - Copy this file to the location specified by `$cfg_alliance_file` in `config.php` so the frontend can use it.
+      - `cp alliance_characters.txt ../../webroot/auth/` 
 
 Uploader
 ========
