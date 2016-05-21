@@ -29,7 +29,7 @@ $(document).ready(function() {
 
     var map = $.cookie('brave-intel-region');
     if (!map) {
-	map = "Wicked Creek";
+	map = "Wicked_Creek";
     }
     drawLoad(map);
 });
@@ -129,6 +129,11 @@ function drawClear() {
     var canvas = document.getElementById('canvas');
     var ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, 4096, 4096);
+
+    $("#map > div").each(function() {
+	$(this).remove();
+    });
+
 }
 
 
@@ -379,13 +384,11 @@ function drawMarker() {
 }
 
 function drawDivs() {
+    if (!drawData['map']) return;
+
     border = 8;
     dw = (drawSystemSize + border) * drawScale;
     dh = (drawSystemSize + border) * drawScale;
-
-    $("#map > div [id^=blink-]").each(function() {
-	$(this).remove();
-    });
 
     for (i in drawData['map']['systems']) {
 	id = drawData['map']['systems'][i]['id'];

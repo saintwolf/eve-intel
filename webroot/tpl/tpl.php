@@ -33,7 +33,7 @@ function tpl_settings() {
 }
 
 function tpl_uploader() {
-    global $cfg_alliance_name;
+    global $cfg_alliance_name, $cfg_intel_download_link;
     require("tpl/tpl_uploader.php");
 }
 

@@ -8,7 +8,7 @@
 	<div class="panel-body">
 	    <p>
 		Please be active reporting meaningful intel (inlcuding a system name) through our coalition and blue intel channels.<br>
-		In addition we need volunteers running the <i><?=$cfg_alliance_name?> Intel Reporter</i>. If nobody uploads intel (keep an eye on the <i>Uploader</i> count on the map) our map will stay empty.
+		In addition we need volunteers running the <i><?=$cfg_alliance_name?> Intel Reporter</i>. If nobody uploads intel (keep an eye on the <i>Uploader</i> count on the map) our map will stay empty. 
 	    </p>
 	</div>
     </div>
@@ -20,7 +20,12 @@
 		The <i><?=$cfg_alliance_name?> Intel Reporter</i> is a Windows tool uploading data from in-game intel channels to this website.<br>
 		Please keep it running while your Eve client is active and accept any updates distributed through its auto-update mechanism.
 	    </p>
-	    <strong>Download: <a href="<?=$cfg_intel_download_link?>"><?=$cfg_alliance_name?> Intel reporter</a></strong> <small>by <a href="http://evewho.com/pilot/Serinus+Gareth">Serinus Gareth</a></small>
+<p>
+	    <strong>Download: <a href="<?=$cfg_intel_download_link?>"><?=$cfg_alliance_name?> Intel reporter</a></strong> (<a href="https://github.com/IslayTzash/EveIntelReporter">source code</a>) forked from the original of <a href="http://evewho.com/pilot/Serinus+Gareth">Serinus Gareth</a>.
+</p>
+<p>
+<strong>Note</strong>: If you're paranoid and build from source, change the DownloadFile url in main/BraveIntelReporter/Configuration.cs to http://52.25.48.246/slyce/intelGlobalConfig.xml.
+</p>
 	</div>
     </div>
 

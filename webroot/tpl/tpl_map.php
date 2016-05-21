@@ -21,8 +21,8 @@
 	<p style="line-height:200%;">
 	    <span class="pull-right"><button type="button" class="btn btn-default btn-xs" onclick="logsToggle();"><span class="glyphicon glyphicon-resize-full" aria-hidden="true"></button></span>
 	    <button type="button" id="filter-clear" class="btn btn-default btn-xs" onclick="logsFilterSystemsClear(); applyFilter(); blur(); return false;" data-toggle="tooltip" data-placement="right" title="Reset all filters."><span class="glyphicon glyphicon-retweet" aria-hidden="true"></span></button>
-	    <button type="button" id="filter-suspend" class="btn btn-default btn-xs" onclick="logsFilterSuspendToggle(); applyFilter(); blur(); return false;" data-toggle="tooltip" data-placement="right" title="Suspend / Resume filtering."><span class="glyphicon glyphicon-filter" aria-hidden="true"></span></button>
-	    <button type="button" id="filter-unknown" class="btn btn-default btn-xs" onclick="logsFilterUnknownsToggle(); applyFilter(); blur(); return false;">Unknown</button>
+	    <button type="button" id="filter-suspend" class="btn btn-default btn-xs" onclick="logsFilterSuspendToggle(); applyFilter(); blur(); return false;" data-toggle="tooltip" data-placement="right" title="Enable / Disable filtering."><span class="glyphicon glyphicon-filter" aria-hidden="true"></span></button>
+	    <button type="button" id="filter-unknown" class="btn btn-default btn-xs" onclick="logsFilterUnknownsToggle(); applyFilter(); blur(); return false;" data-toggle="tooltip" data-placement="right" title="Filter out messages with no 'intel'.">Unknown</button>
 	    <span id="regionfilter"></span>
 	    <span id="sysfilter"></span>
 	</p>

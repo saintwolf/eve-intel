@@ -2,7 +2,7 @@
 
 <!-- Navigation MAP -->
 
-    <li><a href="javascript:logsRegionsClicked([$('#region-name').text().replace(/ /g,'_')])"><span id="region-name"></span></a></li>
+    <li data-toggle="tooltip" data-placement="right" title="Add system to active filter"><a href="javascript:logsRegionsClicked([$('#region-name').text()])"><span id="region-name"></span> <span class="glyphicon glyphicon-filter" aria-hidden="true"></span></a></li>
 
     <form class="navbar-form navbar-left" role="search">
       <div class="form-group">
