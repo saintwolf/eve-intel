@@ -22,7 +22,7 @@ public class ReportServlet extends BaseServlet {
 	private static final long serialVersionUID = 3361775367429183015L;
 
 	private static final Pattern patternVersion = Pattern
-			.compile("([0-9]+)\\.([0-9]+)\\.([0-9]+)\\.([0-9]+)");
+			.compile("([0-9]+)\\.([0-9]+)\\.?([0-9]+)?\\.?([0-9]+)?");
 
 	private static int versionRequired[] = { 1, 1, 0, 5 };
 

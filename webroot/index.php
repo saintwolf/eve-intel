@@ -93,7 +93,7 @@ if ($authResult === false) {
 	tpl_header();
 	tpl_nav($authCharName, $pNav);
 	tpl_map();
-	tpl_footer(array('js/intel_settings.js', 'js/intel_map.js', 'js/intel_map_poll.js', 'js/intel_map_eve.js', 'js/intel_map_jb.js', 'js/intel_map_draw.js', 'js/intel_map_reports.js', 'js/intel_map_logs.js', 'js/simpleheat.min.js', 'js/typeahead.bundle.js', 'js/handlebars-v1.3.0.js'));
+	tpl_footer(array('js/intel_settings.js', 'js/intel_map.js', 'js/intel_map_poll.js', 'js/intel_map_eve.js', 'js/intel_map_jb.js', 'js/intel_map_draw.js', 'js/intel_map_reports.js', 'js/intel_map_logs.js', 'js/simpleheat.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.2/typeahead.bundle.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js'));
 	return;
     }
 

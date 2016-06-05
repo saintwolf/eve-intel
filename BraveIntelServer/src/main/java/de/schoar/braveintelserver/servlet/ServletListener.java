@@ -39,7 +39,7 @@ public class ServletListener implements ServletContextListener {
 		analyzer.load();
 		systems.load();
 
-		reports.inject("kiu Nakamura",
+		reports.inject("Admin",
 				"The EVE Intel Map server has been restarted. Sorry for the inconvenience...");
 
 		System.err.println("*** Started "

@@ -1,13 +1,18 @@
 #!/usr/bin/python
 
-import json,urllib,time
+import json,urllib2,time
 
 allianceId='1042504553'
 page=0
 ids=[]
 
 while True:
-	data = urllib.urlopen( "http://evewho.com/api.php?type=allilist&id=%s&page=%d" % (allianceId, page) ).read()
+	url = "http://evewho.com/api.php?type=allilist&id=%s&page=%d" % (allianceId, page)
+	#print "URL %s" % (url)
+	headers = { 'User-Agent' : 'Mozilla/5.0' }
+	req = urllib2.Request(url, None, headers)
+	data = urllib2.urlopen( req ).read()
+	#print data
 	output = json.loads(data)
 	if not output["characters"]:
 		break;

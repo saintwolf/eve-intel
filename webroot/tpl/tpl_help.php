@@ -59,9 +59,9 @@
     <h4>Map View</h4>
     <ul class="list-group">
 	<li class="list-group-item">
-	    The map draws a chosen region in a <a href="https://evemaps.dotlan.net">dotlan</a> layout and gets enriched by intel reports matching solar systems in realtime. Check the legend in the navigation bar to learn about the color coding and use the region dropdown to select a region to be used.<br>
-	</li>
-	<li class="list-group-item">
+	    The map draws a chosen region in a <a href="https://evemaps.dotlan.net">dotlan</a> layout and gets enriched by intel reports matching solar systems in realtime. Check the legend in the navigation bar to learn about the color coding and use the region dropdown to select a region to be used.
+        <br>
+        <br>
 	    The map always highlights all available intel in the selected region and is not influences by any filters selected in the log view. Clicking on a solar system will add/remove or replace (depending on your <a href="?nav=settings">settings</a>) the system in the log view filter.
 	</li>
     </ul>
@@ -69,9 +69,23 @@
     <h4>Log View</h4>
     <ul class="list-group">
 	<li class="list-group-item">
-	    The log view shows the intel reports submitted by players in the in-game intel channels in realtime.<br>
-	</li>
-	<li class="list-group-item">
+	    The log view shows the intel reports submitted by players in the in-game intel channels in realtime.
+
+	    <h6>Keys</h6>
+            Pressing the following keys will take action on any text you've selected with the mouse.  This allows
+            easier investigation of pilots and systems.  The keys will always open into the same tab, you can tear
+            it off and keep the intel map in its original window.
+
+            <dl class="dl-horizontal">
+            <dt>z</dt>
+            <dd>open selected text as a pilot on zkillboard</dd>
+            <dt>w</dt>
+            <dd>open selected text as a pilot on eve-who</dd>
+            <dt>d</dt>
+            <dd>open selected text as a system on dotlan.org</dd>
+            </dl>
+ 
+	    <h6>Filters</h6>
 	    The log view can be influenced by filters. The currently active filter configuration is displayed above the list of reports.<br>
 	    The filters are modified by interacting with the map and/or reports in the log view. Depending on your application <a href="?nav=settings">settings</a>, a click on a solar system will either add/remove or replace the filter list.
 

@@ -13,7 +13,7 @@ public class ReportStorage extends TimerHelper {
 	private final List<Report> reports = new LinkedList<Report>();
 
 	private static final Pattern patternIntel = Pattern
-			.compile("^\\[\\ [0-9\\.]*\\ [0-9\\:]*\\ \\]\\ ([a-zA-z0-9\\'\\ \\-]*)\\ >\\ (.*)");
+			.compile("^.*?\\[\\ [0-9\\.]*\\ [0-9\\:]*\\ \\]\\ ([a-zA-z0-9\\'\\ \\-]*)\\ >\\ (.*)");
 
 	public ReportStorage() {
 		timerInit(C.REPORT_CLEAN_INTERVAL);
@@ -22,6 +22,7 @@ public class ReportStorage extends TimerHelper {
 	public boolean add(String submitter, String text) {
 		Matcher matcher = patternIntel.matcher(text);
 		if (!matcher.matches()) {
+			System.out.println(String.format("Ignoring report from [%s] [%s]",submitter,text));
 			return false;
 		}
 
