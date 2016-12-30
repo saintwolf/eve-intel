@@ -77,7 +77,7 @@ if ($authResult === false) {
 
     tpl_header();
     tpl_nav_empty();
-    tpl_error();
+    tpl_auth_needed();
     tpl_footer(array());
     return;
 
