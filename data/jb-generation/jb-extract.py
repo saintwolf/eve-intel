@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 from bs4 import BeautifulSoup
 import roman
 
@@ -22,7 +24,9 @@ def extractSystem(td):
 	return td.a['href'].rsplit('/', 1)[-1].upper()
 
 def bridge_tr_filter(tag):
-    return tag.name == 'tr' and tag.has_attr('id') and tag['id'].startswith('bridge-') and not (tag.has_attr('style') and -1 != tag['style'].find('line-through'))
+    return tag.name == 'tr' and tag.has_attr('id') and tag['id'].startswith('bridge-')
+# possibly re-enable strikethrough when dotlan gets better at recognizing jb sov is ihub - ihub matching.
+#    return tag.name == 'tr' and tag.has_attr('id') and tag['id'].startswith('bridge-') and not (tag.has_attr('style') and -1 != tag['style'].find('line-through'))
 
 
 def go():
