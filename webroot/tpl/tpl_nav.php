@@ -18,7 +18,7 @@ function addMenu($act, $id, $link, $name, $c) {
 		<span class="icon-bar"></span>
 		<span class="icon-bar"></span>
 	    </button>
-	    <a class="navbar-brand" href="<?=$cfg_path_base?>"><?=$cfg_header_img_html?></a>
+	    <a class="navbar-brand" href="<?=$cfg_url_base?>"><?=$cfg_header_img_html?></a>
 	</div>
 
 	<div class="navbar-collapse collapse navbar-default-collapse navbar-right">
@@ -31,7 +31,7 @@ function addMenu($act, $id, $link, $name, $c) {
 		    <ul class="dropdown-menu">
 <?php endif; ?>
 <?php if ($active != 'map'): ?>
-			<?php addMenu($active, "map", $cfg_path_base, "Map", "disabled"); ?>
+			<?php addMenu($active, "map", $cfg_url_base, "Map", "disabled"); ?>
 <?php endif; ?>
 			<?php addMenu($active, "bridges", "?nav=bridges", "Bridges", "disabled"); ?>
 			<?php addMenu($active, "uploader", "?nav=uploader", "Uploader", "disabled"); ?>
