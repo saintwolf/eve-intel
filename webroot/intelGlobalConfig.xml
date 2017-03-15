@@ -1,0 +1,9 @@
+<BraveReporterSettings>
+  <chatrooms>
+    <chatroom type="intel">Vanguard.Intel</chatroom>
+    <chatroom type="intel">HADES.Intel</chatroom>
+  </chatrooms>
+  <IntelServer>http://intel.hellspirates.org</IntelServer>
+  <MapLink>http://intel.hellspirates.org</MapLink>
+  <MonitorFrequency>750</MonitorFrequency>
+</BraveReporterSettings>
