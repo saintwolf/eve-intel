@@ -29,7 +29,7 @@ $(document).ready(function() {
 
     var map = $.cookie('brave-intel-region');
     if (!map) {
-	map = "Wicked_Creek";
+	map = "Etherium_Reach";
     }
     drawLoad(map);
 });
@@ -231,7 +231,7 @@ function drawBridges(ctx, shadow) {
 	ymin = Math.min(y1, y3);
 	xmax = Math.max(x1, x3);
 	ymax = Math.max(y1, y3);
-	
+
 	ctx.beginPath();
 	if (shadow === true) {
 	    ctx.lineWidth = 5;
@@ -443,4 +443,3 @@ function drawDivBlink(id) {
 }
 
 // ---------------------------------------------------------------
-

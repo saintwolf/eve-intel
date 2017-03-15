@@ -17,14 +17,13 @@
     <li class="dropdown">
 	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Region <span class="caret"></span></a>
 	<ul class="dropdown-menu"  style="overflow: hidden; overflow-y: auto; max-height: 400px;">
-<li><a href="#" onclick="drawLoad('Wicked_Creek');">Wicked Creek</a></li>
-<li><a href="#" onclick="drawLoad('Scalding_Pass');">Scalding Pass</a></li>
-<li><a href="#" onclick="drawLoad('Detorid');">Detorid</a></li>
+
+<li><a href="#" onclick="drawLoad('Etherium_Reach');">Etherium Reach</a></li>
+<li><a href="#" onclick="drawLoad('Insmother');">Insmother</a></li>
+<li><a href="#" onclick="drawLoad('The_Spire');">The Spire</a></li>
 <li class="divider"></li>
-<li><a href="#" onclick="drawLoad('Deklein');">Deklein</a></li>
-<li><a href="#" onclick="drawLoad('Fade');">Fade</a></li>
-<li><a href="#" onclick="drawLoad('Venal');">Venal</a></li>
-<li><a href="#" onclick="drawLoad('Branch');">Branch</a></li>
+<li><a href="#" onclick="drawLoad('Scalding_Pass');">Scalding Pass</a></li>
+<li><a href="#" onclick="drawLoad('Wicked_Creek');">Wicked Creek</a></li>
 <li class="divider"></li>
 <li><a href="#" onclick="drawLoad('Aridia');">Aridia</a></li>
 <li><a href="#" onclick="drawLoad('Black_Rise');">Black Rise</a></li>
