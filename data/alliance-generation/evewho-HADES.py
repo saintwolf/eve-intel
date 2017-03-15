@@ -2,7 +2,7 @@
 
 import json,urllib2,time
 
-allianceId='1042504553'
+allianceId='99005224'
 page=0
 ids=[]
 
