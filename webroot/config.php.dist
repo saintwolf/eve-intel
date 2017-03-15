@@ -23,21 +23,21 @@ $cfg_url_auth_fail = $cfg_url_base . '/?nav=error';
 //// Alliance/Coalition Customizations ////
 
 // $cfg_alliance_name = 'Brave';
-$cfg_alliance_name = 'SLYCE';
+$cfg_alliance_name = 'HADES';
 
 // Where to download the uploader tool
-$cfg_intel_download_link = '/path/to/IntelReporter.zip';
+$cfg_intel_download_link = '/HadesIntelReporter.zip';
 // Image file to use as favorite icon, the tiny one that appears in the browser url bar
-$cfg_favicon_url = '/intel/img/slyce-logo-150.png';
+$cfg_favicon_url = $cfg_path_base . '/img/HADES_logo.png';
 // Image to use in page header, along with whatever resize and styling code is required
-$cfg_header_img_html = '<img style="margin-top: -7px; height: 42px;" src="img/slyce-logo-150.png">';
+$cfg_header_img_html = '<img style="margin-top: -7px; height: 42px;" src="img/HADES_logo.png">';
 // Contact(s) that may be references on help or jump bridge pages
-$cfg_intel_it_contacts = '<a href="http://evewho.com/pilot/kiu+Nakamura">kiu Nakamura</a> or <a href="http://evewho.com/pilot/Serinus+Gareth">Serinus Gareth</a>';
+$cfg_intel_it_contacts = '<a href="https://evewho.com/pilot/Bak%27thar">Bak\'thar</a>';
 
 /////////////////////////////////////////////////////
 //// Authorization Scheme Selection and Settings ////
 
-// Authorization scheme - must match template and auth.php suffixes 
+// Authorization scheme - must match template and auth.php suffixes
 // $cfg_auth_type = 'brave_core';
 $cfg_auth_type = 'eve_sso';
 
